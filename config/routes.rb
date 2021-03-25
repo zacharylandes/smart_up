@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+    get "/series" => "api/v1/series#index"
+    get "/series/:id" => "api/v1/series#show"
+
+    get "series/:series_id/lessons" => "api/v1/lessons#index"
+    get "series/:series_id/lessons/:id" => "api/v1/lessons#show"
 end
