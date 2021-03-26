@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_25_204148) do
+ActiveRecord::Schema.define(version: 2021_03_26_161127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,12 +29,41 @@ ActiveRecord::Schema.define(version: 2021_03_25_204148) do
 
   create_table "series", force: :cascade do |t|
     t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_lessons", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "lesson_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "status"
+    t.index ["lesson_id"], name: "index_user_lessons_on_lesson_id"
+    t.index ["user_id"], name: "index_user_lessons_on_user_id"
+  end
+
+  create_table "user_series", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "series_id", null: false
     t.time "start_time"
     t.time "end_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.string "status"
+    t.index ["series_id"], name: "index_user_series_on_series_id"
+    t.index ["user_id"], name: "index_user_series_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   add_foreign_key "lessons", "series"
+  add_foreign_key "user_lessons", "lessons"
+  add_foreign_key "user_lessons", "users"
+  add_foreign_key "user_series", "series"
+  add_foreign_key "user_series", "users"
 end
