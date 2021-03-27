@@ -1,17 +1,16 @@
 require 'rails_helper'
 
-require 'pry'
-
 RSpec.describe "Series API" do 
 
   context "HTTP" do
 
     let!(:series) { FactoryBot.create(:series) }
+    let!(:user) { FactoryBot.create(:user) }
     let!(:lessons) { create_list(:lesson, 5,series_id: series.id) }
+    let!(:user_series) { FactoryBot.create(:user_series, user:user, series: series) }
+    let!(:user_lesson) { FactoryBot.create(:user_lesson, user:user,lesson: Lesson.first) }
 
     it "returns all lessons belonging to a series" do
-      # series =  FactoryBot.create(:series)
-      # create_list(:lesson, 5,series_id: series.id)
       get "/series/#{series.id}/lessons.json"
 
       expect(response).to be_successful
@@ -23,9 +22,6 @@ RSpec.describe "Series API" do
     end 
 
     it "returns one series" do
-      # series =  FactoryBot.create(:series)
-      # lesson =  FactoryBot.create(:lesson, series_id: series.id)
-
       get "/series/#{series.id}/lessons/#{lessons.first.id}.json"
 
       expect(response).to be_successful

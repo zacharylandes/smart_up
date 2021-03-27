@@ -1,24 +1,40 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Smart Up is your online education home base! 
 
-Things you may want to cover:
+Visit it it live here:
 
-* Ruby version
+ https://aqueous-hamlet-68346.herokuapp.com/
 
-* System dependencies
+ (Please be patient - Free dynos!)
 
-* Configuration
+This app was built using: 
+ 
+ - Ruby on Rails 6.1.3
 
-* Database creation
+ - Ruby 2.7.2
 
-* Database initialization
+ - A Vue JS frontend (https://github.com/zacharylandes/smart_up_front_end)
 
-* How to run the test suite
+To run the app locally: 
 
-* Services (job queues, cache servers, search engines, etc.)
+clone this repo 
 
-* Deployment instructions
+run `bundle install`
 
-* ...
+run `rspec` to see passing tests
+
+run `rails db:{create,migrate,seed}` to setup the databse 
+
+run `rails s` to see the app locally
+
+
+NEW FEATURE: Your place will be saved if you leave the series and return!
+
+
+TO DO:
+
+Implement authentication using Google and/or Facebook OAUTH. Currently there is only one user!
+
+Implement improved security
+

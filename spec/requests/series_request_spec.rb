@@ -7,6 +7,7 @@ RSpec.describe "Activity API" do
 
     it "returns all series" do
       create_list(:series, 5)
+      Series.all.each{|series|FactoryBot.create(:lesson,series:series)}      
       get '/series.json'
 
       expect(response).to be_successful
@@ -19,7 +20,7 @@ RSpec.describe "Activity API" do
 
     it "returns one series" do
       series =  FactoryBot.create(:series)
-
+      FactoryBot.create(:lesson,series:series)
       get "/series/#{series.id}.json"
 
       expect(response).to be_successful

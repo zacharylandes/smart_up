@@ -23,6 +23,13 @@ module SmartUp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
+    
+    config.middleware.use Rack::Cors do
+      allow do
+        origins '*'
+        resource '/*', :headers => :any, :methods => [:get, :post, :delete, :put, :options]
+      end
+    end
 
     # Configuration for the application, engines, and railties goes here.
     #
