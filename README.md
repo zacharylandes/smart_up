@@ -1,6 +1,7 @@
-# README
 
-### Smart Up is your online education home base! 
+
+# Smart Up!
+## Your online education home base
 
 Visit it it live here:
 
@@ -34,7 +35,7 @@ NEW FEATURE: Your place will be saved if you leave the series and return!
 
 TO DO:
 
-Implement authentication using Google and/or Facebook OAUTH. Currently there is only one user!
+Implement authentication using Google and/or Facebook OAuth. Currently there is only one user!
 
 Implement improved security
 
